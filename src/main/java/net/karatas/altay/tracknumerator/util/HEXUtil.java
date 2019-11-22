@@ -2,12 +2,12 @@ package net.karatas.altay.tracknumerator.util;
 
 public class HEXUtil {
 
-    public static Integer hexToInteger(String hex) {
-        return null;
+    public static String nextHex(String hex) {
+        int intValue = Integer.parseInt(hex, 16);
+        int intResult = intValue + 1;
+        String hexResult = Integer.toHexString(intResult);
+        return hexResult;
     }
 
-    public static String integerToHex(Integer number) {
-        return null;
-    }
-
+    public static boolean isBig(){}
 }

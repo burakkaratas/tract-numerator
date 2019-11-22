@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.karatas.altay.tracknumerator.core.rest.BaseDTO;
+import net.karatas.altay.tracknumerator.dto.tractnumber.model.Coordinate;
 
 import java.util.List;
 

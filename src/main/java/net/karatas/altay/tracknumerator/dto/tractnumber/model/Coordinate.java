@@ -1,4 +1,4 @@
-package net.karatas.altay.tracknumerator.dto.tractnumber;
+package net.karatas.altay.tracknumerator.dto.tractnumber.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

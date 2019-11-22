@@ -7,17 +7,26 @@ import lombok.Setter;
 import net.karatas.altay.tracknumerator.core.rest.BaseDTO;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
+import static net.karatas.altay.tracknumerator.constants.ApplicationConstants.HEX_REGEX;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class TractNumberGenerateRequestDTO extends BaseDTO {
+
+    @NotNull
     @Min(value = 0, message = "validation.numberOfSize.min")
     private Long numberOfSize;
-    @Pattern(regexp = "0[xX][0-9a-fA-F]+", message = "validation.MaxNumber.pattern")
+
+    @NotNull
+    @Pattern(regexp = HEX_REGEX, message = "validation.MaxNumber.pattern")
     private String minNumber;
-    @Pattern(regexp = "0[xX][0-9a-fA-F]+", message = "validation.MinNumber.pattern")
+
+    @NotNull
+    @Pattern(regexp = HEX_REGEX, message = "validation.MinNumber.pattern")
     private String maxNumber;
 }

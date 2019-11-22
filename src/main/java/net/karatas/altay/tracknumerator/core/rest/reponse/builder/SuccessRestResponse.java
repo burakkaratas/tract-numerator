@@ -6,9 +6,9 @@ import net.karatas.altay.tracknumerator.core.rest.BaseDTO;
 import net.karatas.altay.tracknumerator.core.rest.reponse.BaseRestResponse;
 import org.springframework.http.HttpStatus;
 
-public class SuccessResponseBuilder {
+public class SuccessRestResponse {
 
-    private SuccessResponseBuilder() {
+    private SuccessRestResponse() {
     }
 
     public static <B extends BaseDTO> BaseRestResponse<B> create(B body) {
