@@ -1,0 +1,13 @@
+<div class="toolbar" role="banner">
+  <input>
+</div>
+
+<div class="content" role="main">
+  <div class="flex">
+    <div *ngFor="let coordinate of coordinates" [ngClass]="isSetted(coordinate.value)"
+         [ngStyle]="moveCoordinate(coordinate)">coordinate.value
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
