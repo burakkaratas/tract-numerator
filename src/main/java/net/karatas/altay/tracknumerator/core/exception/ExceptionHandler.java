@@ -2,6 +2,7 @@ package net.karatas.altay.tracknumerator.core.exception;
 
 import lombok.extern.log4j.Log4j2;
 import net.karatas.altay.tracknumerator.core.context.Context;
+import net.karatas.altay.tracknumerator.core.exception.types.RestException;
 import net.karatas.altay.tracknumerator.core.rest.BaseDTO;
 import net.karatas.altay.tracknumerator.core.rest.error.RestError;
 import net.karatas.altay.tracknumerator.core.rest.reponse.BaseRestResponse;
@@ -23,7 +24,10 @@ public class ExceptionHandler {
     public ResponseEntity<BaseRestResponse<RestException>> handleException(MethodArgumentNotValidException exception) {
         log.error("Exception Handler:: ", exception);
         List<ObjectError> allErrors = exception.getBindingResult().getAllErrors();
-        String errorMessage = allErrors.stream().map(t -> BundlelUtil.getMessage(t.getDefaultMessage())).collect(Collectors.joining("."));
+        String errorMessage = allErrors
+                .stream()
+                .map(t -> BundlelUtil.getMessage(t.getDefaultMessage()))
+                .collect(Collectors.joining(" * "));
         BaseRestResponse<BaseDTO> response = BaseRestResponse.builder().body(null)
                 .responseStatus(HttpStatus.BAD_REQUEST.toString())
                 .transaction(Context.getTx())

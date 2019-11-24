@@ -24,5 +24,5 @@ public class AppLogger {
         log.info("{}.{} > txt: {}", signature.getDeclaringType()::getSimpleName, signature.getMethod()::getName, Context::getTx);
         return returnValue;
     }
-
+    
 }

@@ -2,12 +2,11 @@
   <input>
 </div>
 
-<div class="content" role="main">
-  <div class="flex">
-    <div *ngFor="let coordinate of coordinates" [ngClass]="isSetted(coordinate.value)"
-         [ngStyle]="moveCoordinate(coordinate)">coordinate.value
-    </div>
-  </div>
-</div>
+  <canvas id="stage" width="1024" height="960" style="background-color: black"></canvas>
+
+  <!--  <div class="flex">-->
+  <!--    <div *ngFor="let coordinate of coordinates" [ngClass]="isSetted(coordinate.value)"-->
+  <!--         [ngStyle]="moveCoordinate(coordinate)">{{coordinate.value}}</div>-->
+  <!--  </div>-->
 
 <router-outlet></router-outlet>

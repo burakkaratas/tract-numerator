@@ -18,15 +18,15 @@ import static net.karatas.altay.tracknumerator.constants.ApplicationConstants.HE
 @NoArgsConstructor
 public class TractNumberGenerateRequestDTO extends BaseDTO {
 
-    @NotNull
+    @NotNull(message = "validation.numberOfSize.notnull")
     @Min(value = 0, message = "validation.numberOfSize.min")
     private Long numberOfSize;
 
-    @NotNull
-    @Pattern(regexp = HEX_REGEX, message = "validation.MaxNumber.pattern")
+    @NotNull(message = "validation.MinNumber.notnull")
+    @Pattern(regexp = HEX_REGEX, message = "validation.MinNumber.pattern")
     private String minNumber;
 
-    @NotNull
-    @Pattern(regexp = HEX_REGEX, message = "validation.MinNumber.pattern")
+    @NotNull(message = "validation.MaxNumber.notnull")
+    @Pattern(regexp = HEX_REGEX, message = "validation.MaxNumber.pattern")
     private String maxNumber;
 }

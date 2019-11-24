@@ -1,4 +1,4 @@
-package net.karatas.altay.tracknumerator.core.exception;
+package net.karatas.altay.tracknumerator.core.exception.types;
 
 import net.karatas.altay.tracknumerator.core.rest.BaseDTO;
 

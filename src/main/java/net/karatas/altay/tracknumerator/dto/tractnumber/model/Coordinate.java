@@ -15,4 +15,5 @@ public class Coordinate implements Serializable {
     private Integer x;
     private Integer y;
     private String value;
+    private Boolean assigned;
 }

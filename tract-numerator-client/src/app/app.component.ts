@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {environment} from "../environments/environment";
 
@@ -9,9 +9,10 @@ import {environment} from "../environments/environment";
   providers: [HttpClient]
 })
 export class AppComponent implements OnInit {
-  min_value: string;
-  max_value: string;
-  numberOfSize: number;
+
+  min_value: string = "AB100";
+  max_value: string = "AB105";
+  numberOfSize: number = 12;
   request: TractNumberRequest;
   coordinates: Coordinate[];
 
@@ -20,6 +21,24 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.postRequest();
+  }
+
+  draw(): void {
+    let canvas = <HTMLCanvasElement>document.getElementById('stage');
+    if (canvas.getContext) {
+      let ctx = canvas.getContext('2d');
+      this.coordinates.forEach(item => {
+        ctx.beginPath();
+        ctx.fillStyle = item.value ? "green" : "red";
+        ctx.arc(item.x, item.y, 20, 0, 2 * Math.PI, true);
+        ctx.closePath();
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillText(item.value ? item.value : "", item.x - 15, item.y + 3);
+        ctx.fill();
+      });
+    }
   }
 
   postRequest() {
@@ -45,31 +64,39 @@ export class AppComponent implements OnInit {
       );
   }
 
-  extractDataCallBack(response: TractNumberResponse) {
+  extractDataCallBack(response
+                        :
+                        TractNumberResponse
+  ) {
     let body = response.body;
+    console.log(body);
     this.coordinates = body.coordinates;
+    this.draw()
   }
 
-  extractErrorCallBack(response: HttpErrorResponse) {
-    console.log(response.error.errors);
+  extractErrorCallBack(response
+                         :
+                         HttpErrorResponse
+  ) {
+    console.log(response);
+    alert(response.error.errors.errorMessage)
   }
 
   isSetted(value
              :
              string
-  ):
-    string {
+  ) {
     if (null != value)
-      return "green";
+      return "sphere green";
     else
-      return "red";
+      return "sphere red";
   }
 
   moveCoordinate(coordinate
                    :
                    Coordinate
   ) {
-    return "border-left: " + coordinate.x + "px; border-top:" + coordinate.y + "px"
+    return "margin-left: " + coordinate.x + "px; margin-top:" + coordinate.y + "px";
   }
 }
 
