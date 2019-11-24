@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
     let canvas = <HTMLCanvasElement>document.getElementById('stage');
     if (canvas.getContext) {
       let ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, 1024, 960);
       this.coordinates.forEach(item => {
         ctx.beginPath();
         ctx.fillStyle = item.value ? "green" : "red";
