@@ -2,7 +2,7 @@ package net.karatas.altay.tracknumerator.core.rest.reponse;
 
 import lombok.*;
 import net.karatas.altay.tracknumerator.core.rest.BaseDTO;
-import net.karatas.altay.tracknumerator.core.rest.error.RestError;
+import net.karatas.altay.tracknumerator.core.exception.types.RestException;
 
 import java.io.Serializable;
 
@@ -18,7 +18,7 @@ public class BaseRestResponse<B extends BaseDTO> implements Serializable {
 
     private String transaction;
 
-    private RestError errors;
+    private RestException errors;
 
     private B body;
 

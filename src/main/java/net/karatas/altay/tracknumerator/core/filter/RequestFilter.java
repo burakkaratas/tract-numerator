@@ -1,4 +1,4 @@
-package net.karatas.altay.tracknumerator.core.servlet.filter;
+package net.karatas.altay.tracknumerator.core.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import net.karatas.altay.tracknumerator.core.context.Context;
@@ -14,7 +14,9 @@ import java.util.UUID;
 @Slf4j
 public class RequestFilter extends GenericFilterBean {
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest,
+                         ServletResponse servletResponse,
+                         FilterChain filterChain) throws IOException, ServletException {
         try {
             Context.setTx(UUID.randomUUID().toString());
             filterChain.doFilter(servletRequest, servletResponse);

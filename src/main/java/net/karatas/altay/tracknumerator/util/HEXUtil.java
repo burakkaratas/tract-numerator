@@ -1,7 +1,5 @@
 package net.karatas.altay.tracknumerator.util;
 
-import org.apache.tomcat.util.buf.HexUtils;
-
 public class HEXUtil {
 
     public static String nextHex(String hex, int offset) {

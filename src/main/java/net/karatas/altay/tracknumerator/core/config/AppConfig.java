@@ -1,7 +1,7 @@
 package net.karatas.altay.tracknumerator.core.config;
 
 import net.karatas.altay.tracknumerator.core.aspect.AppLogger;
-import net.karatas.altay.tracknumerator.core.servlet.filter.RequestFilter;
+import net.karatas.altay.tracknumerator.core.filter.RequestFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;

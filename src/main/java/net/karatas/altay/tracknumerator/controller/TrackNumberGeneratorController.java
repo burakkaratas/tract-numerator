@@ -1,6 +1,7 @@
 package net.karatas.altay.tracknumerator.controller;
 
 import lombok.RequiredArgsConstructor;
+import net.karatas.altay.tracknumerator.constants.RestConstants;
 import net.karatas.altay.tracknumerator.core.rest.reponse.BaseRestResponse;
 import net.karatas.altay.tracknumerator.core.rest.reponse.builder.SuccessRestResponse;
 import net.karatas.altay.tracknumerator.dto.tractnumber.TractNumberGenerateRequestDTO;
@@ -15,16 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-import static net.karatas.altay.tracknumerator.constants.ApplicationConstants.*;
-
 @RestController
-@RequestMapping(value = REST_URL)
+@RequestMapping(value = RestConstants.REST_URL)
 @RequiredArgsConstructor
 public class TrackNumberGeneratorController {
 
     private final ITractNumberService tractNumeratorService;
 
-    @PostMapping(value = GENERATE_URL, consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
+    @PostMapping(value = RestConstants.GENERATE_URL, consumes = RestConstants.APPLICATION_JSON, produces = RestConstants.APPLICATION_JSON)
     public ResponseEntity<BaseRestResponse<TractNumberGenerateResponseDTO>> generate(@RequestBody @Valid TractNumberGenerateRequestDTO requestDTO) {
         TractNumberGenerateResponseDTO result = tractNumeratorService.generate(requestDTO);
         return new ResponseEntity<>(SuccessRestResponse.create(result), HttpStatus.OK);
