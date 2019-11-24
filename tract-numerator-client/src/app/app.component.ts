@@ -10,9 +10,9 @@ import {environment} from "../environments/environment";
 })
 export class AppComponent implements OnInit {
 
-  min_value: string = "AB100";
-  max_value: string = "AB105";
-  numberOfSize: number = 12;
+  min_value: string;
+  max_value: string;
+  numberOfSize: number;
   request: TractNumberRequest;
   coordinates: Coordinate[];
 
@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.postRequest();
   }
 
   draw(): void {
@@ -42,6 +41,9 @@ export class AppComponent implements OnInit {
   }
 
   postRequest() {
+    console.log(this.min_value);
+    console.log(this.max_value);
+    console.log(this.numberOfSize);
 
     this.httpClient
       .post<TractNumberResponse>(environment.url, {
@@ -64,10 +66,7 @@ export class AppComponent implements OnInit {
       );
   }
 
-  extractDataCallBack(response
-                        :
-                        TractNumberResponse
-  ) {
+  extractDataCallBack(response: TractNumberResponse) {
     let body = response.body;
     console.log(body);
     this.coordinates = body.coordinates;
