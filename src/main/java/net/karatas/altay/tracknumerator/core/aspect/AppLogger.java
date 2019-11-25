@@ -17,13 +17,18 @@ public class AppLogger {
   public Object logMethods(ProceedingJoinPoint pjp) throws Throwable {
     long start = System.currentTimeMillis();
     MethodSignature signature = (MethodSignature) pjp.getSignature();
-    log.info("{}.{} -> txt: {}", signature.getDeclaringType()::getSimpleName,
-        signature.getMethod()::getName, Context::getTx);
+    log.info("{}.{} -> txt: {}",
+        signature.getDeclaringType()::getSimpleName,
+        signature.getMethod()::getName,
+        Context::getTx);
     Object returnValue = pjp.proceed();
-    long totalCost = TimeUnit.SECONDS
-        .convert(System.currentTimeMillis() - start, TimeUnit.MILLISECONDS);
-    log.info("{}.{} > txt: {}", signature.getDeclaringType()::getSimpleName,
-        signature.getMethod()::getName, Context::getTx);
+    long totalCost = TimeUnit.SECONDS.convert(
+        System.currentTimeMillis() - start, TimeUnit.MILLISECONDS);
+    log.info("{}.{} > txt: {} // total: {}",
+        signature.getDeclaringType()::getSimpleName,
+        signature.getMethod()::getName,
+        Context::getTx,
+        () -> totalCost);
     return returnValue;
   }
 
