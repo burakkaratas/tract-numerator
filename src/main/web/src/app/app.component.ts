@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {environment} from "../environments/environment";
 
@@ -47,24 +47,24 @@ export class AppComponent implements OnInit {
     console.log(this.numberOfSize);
 
     this.httpClient
-      .post<TractNumberResponse>(environment.url, {
-        "minNumber": this.min_value,
-        "maxNumber": this.max_value,
-        "numberOfSize": this.numberOfSize
-      }, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Access-Control-Allow-Origin': 'http://localhost:4200'
-        })
+    .post<TractNumberResponse>(environment.url, {
+      "minNumber": this.min_value,
+      "maxNumber": this.max_value,
+      "numberOfSize": this.numberOfSize
+    }, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:4200'
       })
-      .subscribe(
-        next => {
-          this.extractDataCallBack(next)
-        }, error => {
-          this.extractErrorCallBack(error)
-        }
-      );
+    })
+    .subscribe(
+      next => {
+        this.extractDataCallBack(next)
+      }, error => {
+        this.extractErrorCallBack(error)
+      }
+    );
   }
 
   extractDataCallBack(response: TractNumberResponse) {

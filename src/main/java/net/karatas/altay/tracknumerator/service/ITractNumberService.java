@@ -4,5 +4,6 @@ import net.karatas.altay.tracknumerator.dto.tractnumber.TractNumberGenerateReque
 import net.karatas.altay.tracknumerator.dto.tractnumber.TractNumberGenerateResponseDTO;
 
 public interface ITractNumberService {
-    TractNumberGenerateResponseDTO generate(TractNumberGenerateRequestDTO requestDTO);
+
+  TractNumberGenerateResponseDTO generate(TractNumberGenerateRequestDTO requestDTO);
 }
